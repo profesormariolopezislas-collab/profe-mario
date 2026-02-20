@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 5: Building Vocabulary - Profe Mario</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: -apple-system, sans-serif; background-color: #f0f2f5; margin: 0; padding: 10px; }
+        .container { max-width: 650px; background: white; padding: 25px; border-radius: 15px; margin: auto; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h2 { color: #e67e22; text-align: center; margin-bottom: 20px; }
+        .section-title { background: #fff3e0; padding: 12px; border-radius: 8px; margin: 25px 0 15px; font-weight: bold; border-left: 5px solid #e67e22; font-size: 15px; }
+        .item { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; font-size: 14px; }
+        input[type="text"] { padding: 8px; border: 1px solid #ddd; border-radius: 6px; outline: none; transition: 0.3s; }
+        input[type="text"]:focus { border-color: #e67e22; background: #fffdfb; }
+        .match-input { width: 100px; text-align: center; font-weight: bold; color: #e67e22; }
+        .fill-input { border: none; border-bottom: 2px solid #e67e22; width: 120px; text-align: center; background: transparent; }
+        .btn-submit { background: #e67e22; color: white; border: none; width: 100%; padding: 15px; border-radius: 10px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 30px; }
+        #report { display: none; margin-top: 20px; padding: 20px; border-radius: 12px; border: 2px solid #e67e22; background: #fafafa; }
+        .correct { color: #1e8e3e; font-weight: bold; }
+        .incorrect { color: #d93025; font-weight: bold; }
+        .word-bank { background: #eee; padding: 10px; border-radius: 8px; margin-bottom: 15px; text-align: center; font-style: italic; font-size: 13px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Unit 5: Building Vocabulary</h2>
+
+    <div id="quiz">
+        <div class="section-title">B. Match each word in bold from the reading with its meaning.</div>
+        <div class="word-bank">Keywords: consume, equivalent, harvest, nutrition, agriculture, rear, livestock, staples, deficiencies, edible</div>
+        
+        <div id="sectionB">
+            <div class="item">1. <input type="text" id="b1" class="match-input" placeholder="word"> to eat</div>
+            <div class="item">2. <input type="text" id="b2" class="match-input" placeholder="word"> of equal value</div>
+            <div class="item">3. <input type="text" id="b3" class="match-input" placeholder="word"> can be eaten</div>
+            <div class="item">4. <input type="text" id="b4" class="match-input" placeholder="word"> to raise an animal</div>
+            <div class="item">5. <input type="text" id="b5" class="match-input" placeholder="word"> a lack of something</div>
+            <div class="item">6. <input type="text" id="b6" class="match-input" placeholder="word"> to pick or gather crops</div>
+            <div class="item">7. <input type="text" id="b7" class="match-input" placeholder="word"> the practice of farming</div>
+            <div class="item">8. <input type="text" id="b8" class="match-input" placeholder="word"> animals that are raised for food</div>
+            <div class="item">9. <input type="text" id="b9" class="match-input" placeholder="word"> a basic food that people often eat</div>
+            <div class="item">10. <input type="text" id="b10" class="match-input" placeholder="word"> substances we get from food for health</div>
+        </div>
+
+        <div class="section-title">D. Complete the questions using the words in bold.</div>
+        <div id="sectionD">
+            <p>1. In my country, we don't grow many crops because we don't have much land. How important is <input type="text" id="d1" class="fill-input"> in your country?</p>
+            <p>2. What foods do people in your country <input type="text" id="d2" class="fill-input"> more of now than before?</p>
+            <p>3. Do you try to eat healthy food? How important is good <input type="text" id="d3" class="fill-input"> to you?</p>
+            <p>4. Rice is the most widely eaten food in the world. What other <input type="text" id="d4" class="fill-input"> foods can you name?</p>
+        </div>
+
+        <button class="btn-submit" onclick="evaluateQuiz()">Submit Activity</button>
+    </div>
+
+    <div id="report">
+        <h3 style="margin-top:0; color:#e67e22;">Performance Report</h3>
+        <p id="stName"></p>
+        <p id="stTime"></p>
+        <hr>
+        <div id="resList"></div>
+        <h3 id="finalScore"></h3>
+        <button class="btn-submit" style="background:#5f6368;" onclick="location.href='../Ingles_av2.html'">Back to Menu</button>
+    </div>
+</div>
+
+<script>
+    function evaluateQuiz() {
+        const name = localStorage.getItem('userName') || "Student";
+        let score = 0;
+        let total = 14;
+        let feedback = "";
+
+        // Answers Section B
+        const bAns = ["consume", "equivalent", "edible", "rear", "deficiencies", "harvest", "agriculture", "livestock", "staples", "nutrition"];
+        for(let i=1; i<=10; i++) {
+            let userVal = document.getElementById('b'+i).value.trim().toLowerCase();
+            if(userVal === bAns[i-1]) { score++; feedback += `<p>B${i}: <span class="correct">Correct ✅</span></p>`; }
+            else { feedback += `<p>B${i}: <span class="incorrect">Incorrect ❌ (Correct: ${bAns[i-1]})</span></p>`; }
+        }
+
+        // Answers Section D
+        const dAns = ["agriculture", "consume", "nutrition", "staple"]; // or staples
+        for(let i=1; i<=4; i++) {
+            let userVal = document.getElementById('d'+i).value.trim().toLowerCase();
+            let isRight = (userVal === dAns[i-1] || (i===4 && userVal === "staples"));
+            if(isRight) { score++; feedback += `<p>D${i}: <span class="correct">Correct ✅</span></p>`; }
+            else { feedback += `<p>D${i}: <span class="incorrect">Incorrect ❌</span></p>`; }
+        }
+
+        document.getElementById('quiz').style.display = 'none';
+        document.getElementById('report').style.display = 'block';
+        document.getElementById('stName').innerHTML = `<b>Student:</b> ${name}`;
+        document.getElementById('stTime').innerHTML = `<b>Date:</b> ${new Date().toLocaleString()}`;
+        document.getElementById('resList').innerHTML = feedback;
+        document.getElementById('finalScore').innerHTML = `Final Score: ${score} / ${total}`;
+    }
+</script>
+
+</body>
+</html>
