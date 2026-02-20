@@ -3,112 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unit 1: Data Analysis - Profe Mario</title>
+    <title>Unit 1: Data Analysis</title>
     <style>
         * { box-sizing: border-box; }
         body { font-family: -apple-system, sans-serif; background-color: #f0f2f5; margin: 0; padding: 10px; }
         .container { max-width: 600px; background: white; padding: 20px; border-radius: 15px; margin: auto; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        h2 { color: #1a73e8; margin-top: 0; text-align: center; }
-        table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 20px; }
-        th, td { border: 1px solid #dadce0; padding: 8px; text-align: center; }
+        h2 { color: #1a73e8; text-align: center; }
+        table { width: 100%; border-collapse: collapse; font-size: 11px; margin-bottom: 20px; }
+        th, td { border: 1px solid #dadce0; padding: 6px; text-align: center; }
         th { background-color: #f8f9fa; }
         .instructions { background: #e8f0fe; padding: 10px; border-radius: 8px; margin-bottom: 15px; font-size: 14px; }
-        .question { margin-bottom: 15px; font-size: 15px; line-height: 1.5; border-bottom: 1px solid #f0f2f5; padding-bottom: 10px; }
-        input { border: none; border-bottom: 2px solid #1a73e8; padding: 2px; font-size: 15px; width: 140px; outline: none; text-align: center; font-weight: bold; background: #fffbe6; }
+        .question { margin-bottom: 15px; font-size: 15px; line-height: 1.6; padding-bottom: 10px; border-bottom: 1px solid #f1f3f4; }
+        input { border: none; border-bottom: 2px solid #1a73e8; padding: 2px; font-size: 15px; width: 130px; outline: none; text-align: center; background: #fffbe6; }
         .btn-check { background: #1a73e8; color: white; border: none; width: 100%; padding: 15px; border-radius: 10px; font-size: 16px; font-weight: bold; cursor: pointer; }
-        #report { display: none; margin-top: 20px; padding: 15px; border-radius: 10px; background: #fff; border: 2px solid #1a73e8; }
+        #report { display: none; margin-top: 20px; padding: 15px; border-radius: 10px; border: 2px solid #1a73e8; }
         .correct { color: #1e8e3e; font-weight: bold; }
         .incorrect { color: #d93025; font-weight: bold; }
-        .word-bank { font-style: italic; color: #5f6368; font-size: 13px; margin-bottom: 10px; text-align: center; }
     </style>
 </head>
 <body>
-
 <div class="container">
-    <h2>Activity: Connectivity in the US</h2>
-    
+    <h2>Connectivity in the US</h2>
     <table>
-        <tr>
-            <th>Generations</th>
-            <th>Own a smartphone</th>
-            <th>Own a tablet</th>
-            <th>Use social media</th>
-            <th>Internet is good</th>
-        </tr>
-        <tr>
-            <td><b>Millennials</b></td><td>93%</td><td>53%</td><td>86%</td><td>84%</td>
-        </tr>
-        <tr>
-            <td><b>Generation X</b></td><td>90%</td><td>55%</td><td>76%</td><td>74%</td>
-        </tr>
-        <tr>
-            <td><b>Baby Boomers</b></td><td>68%</td><td>52%</td><td>59%</td><td>68%</td>
-        </tr>
-        <tr>
-            <td><b>Silent Gen</b></td><td>40%</td><td>33%</td><td>28%</td><td>63%</td>
-        </tr>
+        <tr><th>Generations</th><th>Smartphone</th><th>Tablet</th><th>Social Media</th><th>Internet is good</th></tr>
+        <tr><td><b>Millennials</b></td><td>93%</td><td>53%</td><td>86%</td><td>84%</td></tr>
+        <tr><td><b>Generation X</b></td><td>90%</td><td>55%</td><td>76%</td><td>74%</td></tr>
+        <tr><td><b>Baby Boomers</b></td><td>68%</td><td>52%</td><td>59%</td><td>68%</td></tr>
+        <tr><td><b>Silent Gen</b></td><td>40%</td><td>33%</td><td>28%</td><td>63%</td></tr>
     </table>
-
-    <div class="instructions">
-        <b>B. Read the sentences about the chart.</b> Write the names of the correct generations.
-    </div>
-    
-    <div class="word-bank">
-        Options: Millennials / Generation X / Baby Boomers / Silent Generation
-    </div>
-
+    <div class="instructions"><b>Instructions:</b> Read the chart and write the correct generations.</div>
     <div id="quiz">
-        <div class="question">1. The overwhelming majority of <input type="text" id="q0"> and <input type="text" id="q1"> own a smartphone.</div>
+        <div class="question">1. The majority of <input type="text" id="q0"> and <input type="text" id="q1"> own a smartphone.</div>
         <div class="question">2. Just over two thirds of <input type="text" id="q2"> own one.</div>
         <div class="question">3. About three quarters of <input type="text" id="q3"> use social media.</div>
-        <div class="question">4. Approximately one third of <input type="text" id="q4"> own a tablet computer.</div>
-        <div class="question">5. Nearly two thirds of <input type="text" id="q5"> think the internet has been good for society.</div>
-        
+        <div class="question">4. Approximately one third of <input type="text" id="q4"> own a tablet.</div>
+        <div class="question">5. Nearly two thirds of <input type="text" id="q5"> think the internet is good.</div>
         <button class="btn-check" onclick="generateReport()">Submit Results</button>
     </div>
-
     <div id="report">
-        <h3 style="margin-top:0;">Performance Report</h3>
-        <p id="studentName"></p>
-        <p id="timestamp"></p>
-        <hr>
-        <div id="resultsList"></div>
-        <button class="btn-check" style="background:#5f6368; margin-top:15px;" onclick="location.href='lengua2.html'">Finish</button>
+        <h3 style="margin:0;">Performance Report</h3>
+        <p id="stName"></p><p id="stTime"></p><hr>
+        <div id="resList"></div>
+        <button class="btn-check" style="background:#5f6368; margin-top:10px;" onclick="location.href='lengua2.html'">Finish</button>
     </div>
 </div>
-
 <script>
-    // Valid answers (Accepting slight variations in naming)
-    const keys = [
-        ["millennials"], 
-        ["generation x", "gen x"], 
-        ["baby boomers", "boomers"], 
-        ["generation x", "gen x"], 
-        ["the silent generation", "silent generation", "silent gen"],
-        ["the silent generation", "silent generation", "silent gen"]
-    ];
-
     function generateReport() {
         const name = localStorage.getItem('userName') || "Student";
-        const now = new Date();
+        const q0 = document.getElementById('q0').value.trim().toLowerCase();
+        const q1 = document.getElementById('q1').value.trim().toLowerCase();
+        const q2 = document.getElementById('q2').value.trim().toLowerCase();
+        const q3 = document.getElementById('q3').value.trim().toLowerCase();
+        const q4 = document.getElementById('q4').value.trim().toLowerCase();
+        const q5 = document.getElementById('q5').value.trim().toLowerCase();
+
         let score = 0;
         let feedback = "";
 
-        for(let i=0; i < 6; i++) {
-            let val = document.getElementById('q'+i).value.trim().toLowerCase();
-            let isRight = keys[i].includes(val);
-            if(isRight) score++;
-            
-            feedback += `<p><b>Question ${i+1}:</b> ${isRight ? '<span class="correct">Correct ✅</span>' : '<span class="incorrect">Incorrect ❌</span> (Answer: ' + keys[i][0] + ')'}</p>`;
-        }
+        // Lógica especial para pregunta 1 (intercambiables)
+        const g1 = ["millennials", "millenial"];
+        const g2 = ["generation x", "gen x"];
+        let q1Correct = (g1.includes(q0) && g2.includes(q1)) || (g2.includes(q0) && g1.includes(q1));
+        if(q1Correct) score++;
+        feedback += `<p>Q1: ${q1Correct ? '<span class="correct">Correct ✅</span>' : '<span class="incorrect">Incorrect ❌</span>'}</p>`;
+
+        // Resto de preguntas
+        const checks = [
+            {val: q2, ans: ["baby boomers", "boomers"], lab: "Q2"},
+            {val: q3, ans: ["generation x", "gen x"], lab: "Q3"},
+            {val: q4, ans: ["silent generation", "silent gen"], lab: "Q4"},
+            {val: q5, ans: ["silent generation", "silent gen"], lab: "Q5"}
+        ];
+
+        checks.forEach(c => {
+            let ok = c.ans.includes(c.val);
+            if(ok) score++;
+            feedback += `<p>${c.lab}: ${ok ? '<span class="correct">Correct ✅</span>' : '<span class="incorrect">Incorrect ❌</span>'}</p>`;
+        });
 
         document.getElementById('quiz').style.display = 'none';
         document.getElementById('report').style.display = 'block';
-        document.getElementById('studentName').innerHTML = `<b>Student:</b> ${name}`;
-        document.getElementById('timestamp').innerHTML = `<b>Date/Time:</b> ${now.toLocaleString()}`;
-        document.getElementById('resultsList').innerHTML = feedback + `<h3>Final Score: ${score} / 6</h3>`;
+        document.getElementById('stName').innerHTML = `<b>Student:</b> ${name}`;
+        document.getElementById('stTime').innerHTML = `<b>Date:</b> ${new Date().toLocaleString()}`;
+        document.getElementById('resList').innerHTML = feedback + `<h3>Score: ${score} / 5</h3>`;
     }
 </script>
-
 </body>
 </html>
