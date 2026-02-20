@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lengua Adicional IV - Profe Mario</title>
+    <style>
+        /* Reutilizamos el estilo anterior para consistencia */
+        * { box-sizing: border-box; }
+        body { font-family: -apple-system, system-ui, sans-serif; background-color: #f0f2f5; margin: 0; padding: 15px; }
+        .header { background: #8e24aa; color: white; padding: 20px; border-radius: 12px; margin-bottom: 20px; }
+        .empty-state { text-align: center; color: #5f6368; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h2 id="welcome">Hola...</h2>
+    <div>Grupo: Lengua Adicional IV</div>
+</div>
+
+<div class="empty-state">
+    <p>Aún no hay actividades publicadas para este grupo.</p>
+</div>
+
+<script>
+    const name = localStorage.getItem('userName') || "Estudiante";
+    document.getElementById('welcome').innerText = "Hola, " + name;
+</script>
+
+</body>
+</html>
