@@ -1,45 +1,13 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lengua Adicional II - Profe Mario</title>
-    <style>
-        * { box-sizing: border-box; }
-        body { font-family: -apple-system, system-ui, sans-serif; background-color: #f0f2f5; margin: 0; padding: 15px; }
-        .header { background: #1a73e8; color: white; padding: 20px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(26,115,232,0.2); }
-        h2 { margin: 0; font-size: 22px; }
-        .student-name { font-weight: 300; opacity: 0.9; }
-        .card { background: white; border-radius: 12px; padding: 15px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .activity-info h3 { margin: 0; font-size: 16px; color: #3c4043; }
-        .btn-start { background: #34a853; color: white; text-decoration: none; padding: 10px 18px; border-radius: 8px; font-weight: bold; font-size: 14px; }
-        .btn-logout { background: #dadce0; color: #3c4043; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; margin-top: 10px; }
-    </style>
-</head>
-<body>
-
 <div class="header">
-    <h2 id="welcome">Hola...</h2>
-    <div class="student-name">Grupo: Lengua Adicional II</div>
-    <button class="btn-logout" onclick="logout()">Cerrar Sesión</button>
+    <h2 id="welcome">Welcome...</h2>
+    <div class="student-name">Group: Lengua Adicional II</div>
+    <button class="btn-logout" onclick="logout()">Logout</button>
 </div>
-
 <div class="card">
-    <div class="activity-info">
-        <h3>Unit 1: Grammar 2</h3>
-    </div>
-    <a href="unit1_grammar2.html" class="btn-start">Abrir</a>
+    <div class="activity-info"><h3>Unit 1: Connectivity Data</h3></div>
+    <a href="unit1_grammar2.html" class="btn-start">Open</a>
 </div>
-
 <script>
-    const name = localStorage.getItem('userName') || "Estudiante";
-    document.getElementById('welcome').innerText = "Hola, " + name;
-
-    function logout() {
-        localStorage.clear();
-        window.location.href = 'index.html';
-    }
+    document.getElementById('welcome').innerText = "Welcome, " + (localStorage.getItem('userName') || "Student");
+    function logout() { localStorage.clear(); window.location.href = 'index.html'; }
 </script>
-
-</body>
-</html>
