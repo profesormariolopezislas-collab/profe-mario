@@ -1,13 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lengua Adicional II - Profe Mario</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: -apple-system, system-ui, sans-serif; background-color: #f0f2f5; margin: 0; padding: 15px; }
+        .header { background: #1a73e8; color: white; padding: 20px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(26,115,232,0.2); }
+        h2 { margin: 0; font-size: 22px; }
+        .student-info { font-weight: 300; opacity: 0.9; margin-top: 5px; }
+        .empty-state { text-align: center; color: #5f6368; margin-top: 50px; padding: 20px; }
+        .btn-logout { background: rgba(255,255,255,0.2); color: white; border: 1px solid white; padding: 8px 15px; border-radius: 6px; cursor: pointer; margin-top: 15px; font-size: 13px; }
+    </style>
+</head>
+<body>
+
 <div class="header">
     <h2 id="welcome">Welcome...</h2>
-    <div class="student-name">Group: Lengua Adicional II</div>
+    <div class="student-info">Group: Lengua Adicional II</div>
     <button class="btn-logout" onclick="logout()">Logout</button>
 </div>
-<div class="card">
-    <div class="activity-info"><h3>Unit 1: Connectivity Data</h3></div>
-    <a href="unit1_grammar2.html" class="btn-start">Open</a>
+
+<div class="empty-state">
+    <div style="font-size: 50px; margin-bottom: 10px;">📚</div>
+    <h3>No assignments yet</h3>
+    <p>Please check back later for new activities.</p>
 </div>
+
 <script>
-    document.getElementById('welcome').innerText = "Welcome, " + (localStorage.getItem('userName') || "Student");
-    function logout() { localStorage.clear(); window.location.href = 'index.html'; }
+    const name = localStorage.getItem('userName') || "Student";
+    document.getElementById('welcome').innerText = "Welcome, " + name;
+
+    function logout() {
+        localStorage.clear();
+        window.location.href = 'index.html';
+    }
 </script>
+
+</body>
+</html>
