@@ -2,42 +2,96 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lengua Adicional II - Profe Mario</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Profe Mario - Bienvenida</title>
     <style>
-        * { box-sizing: border-box; }
-        body { font-family: -apple-system, system-ui, sans-serif; background-color: #f0f2f5; margin: 0; padding: 15px; }
-        .header { background: #1a73e8; color: white; padding: 20px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(26,115,232,0.2); }
-        h2 { margin: 0; font-size: 22px; }
-        .student-name { font-weight: 300; opacity: 0.9; }
-        .card { background: white; border-radius: 12px; padding: 15px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .activity-info h3 { margin: 0; font-size: 16px; color: #3c4043; }
-        .btn-start { background: #34a853; color: white; text-decoration: none; padding: 10px 18px; border-radius: 8px; font-weight: bold; font-size: 14px; }
-        .btn-logout { background: #dadce0; color: #3c4043; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; margin-top: 10px; }
+        * { box-sizing: border-box; } /* Evita que los elementos se desborden */
+        
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            background-color: #f0f2f5; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0; 
+            padding: 20px;
+        }
+
+        .card { 
+            background: white; 
+            padding: 30px 20px; 
+            border-radius: 16px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            text-align: center; 
+            width: 100%; 
+            max-width: 350px; 
+        }
+
+        h1 { color: #1a73e8; margin-bottom: 5px; font-size: 28px; }
+        p { color: #5f6368; margin-bottom: 25px; font-size: 14px; }
+
+        input, select { 
+            width: 100%; 
+            padding: 14px; 
+            margin: 8px 0; 
+            border: 2px solid #e8eaed; 
+            border-radius: 8px; 
+            font-size: 16px; /* Tamaño ideal para que iOS no haga zoom automático */
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input:focus { border-color: #1a73e8; }
+
+        button { 
+            background-color: #1a73e8; 
+            color: white; 
+            border: none; 
+            padding: 16px; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            width: 100%; 
+            font-size: 16px; 
+            font-weight: bold;
+            margin-top: 15px;
+            box-shadow: 0 4px 6px rgba(26, 115, 232, 0.2);
+        }
+
+        button:active { transform: scale(0.98); } /* Efecto de pulsación */
     </style>
 </head>
 <body>
 
-<div class="header">
-    <h2 id="welcome">Hola...</h2>
-    <div class="student-name">Grupo: Lengua Adicional II</div>
-    <button class="btn-logout" onclick="logout()">Cerrar Sesión</button>
-</div>
-
 <div class="card">
-    <div class="activity-info">
-        <h3>Unit 1: Grammar 2</h3>
-    </div>
-    <a href="unit1_grammar2.html" class="btn-start">Abrir</a>
+    <h1>Profe Mario</h1>
+    <p>Portal de Actividades</p>
+    
+    <input type="text" id="lastName" placeholder="Apellido (Last Name)" autocomplete="family-name">
+    <input type="text" id="firstName" placeholder="Nombre (First Name)" autocomplete="given-name">
+    
+    <select id="groupSelect">
+        <option value="" disabled selected>Selecciona tu grupo</option>
+        <option value="lengua2.html">Lengua Adicional II</option>
+        <option value="lengua4.html">Lengua Adicional IV</option>
+        <option value="ingles_av2.html">Inglés Avanzado II</option>
+    </select>
+
+    <button onclick="startSession()">Entrar a Clase</button>
 </div>
 
 <script>
-    const name = localStorage.getItem('userName') || "Estudiante";
-    document.getElementById('welcome').innerText = "Hola, " + name;
+    function startSession() {
+        const ln = document.getElementById('lastName').value.trim();
+        const fn = document.getElementById('firstName').value.trim();
+        const target = document.getElementById('groupSelect').value;
 
-    function logout() {
-        localStorage.clear();
-        window.location.href = 'index.html';
+        if(ln && fn && target) {
+            localStorage.setItem('userName', fn + " " + ln);
+            window.location.href = target;
+        } else { 
+            alert("Por favor, rellena todos los campos."); 
+        }
     }
 </script>
 
