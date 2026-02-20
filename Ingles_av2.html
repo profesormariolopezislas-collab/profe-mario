@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inglés Avanzado II - Profe Mario</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: -apple-system, system-ui, sans-serif; background-color: #f0f2f5; margin: 0; padding: 15px; }
+        .header { background: #e67e22; color: white; padding: 20px; border-radius: 12px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h2 id="welcome">Hola...</h2>
+    <div>Grupo: Inglés Avanzado II</div>
+</div>
+
+<div style="text-align: center; color: #5f6368; padding: 20px;">
+    <h3>Welcome!</h3>
+    <p>Check back later for new assignments.</p>
+</div>
+
+<script>
+    const name = localStorage.getItem('userName') || "Estudiante";
+    document.getElementById('welcome').innerText = "Welcome, " + name;
+</script>
+
+</body>
+</html>
