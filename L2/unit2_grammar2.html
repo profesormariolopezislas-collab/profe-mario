@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 2: Grammar 2 - Profe Mario</title>
+    
+    <style>
+        /* --- ESTILOS VISUALES --- */
+        * { box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, sans-serif; 
+            background-color: #f0f2f5; 
+            margin: 0; 
+            padding: 10px; 
+        }
+        .container { 
+            max-width: 600px; 
+            background: white; 
+            padding: 25px; 
+            border-radius: 15px; 
+            margin: auto; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+        }
+        /* Color azul para Lengua II */
+        h2 { color: #1a73e8; text-align: center; }
+        
+        .grammar-box { 
+            background: #e8f0fe; 
+            padding: 15px; 
+            border-radius: 10px; 
+            margin-bottom: 20px; 
+            font-size: 14px; 
+            border-left: 5px solid #1a73e8; 
+        }
+        .item { margin-bottom: 15px; font-size: 15px; line-height: 1.6; }
+        .underline { text-decoration: underline; font-weight: bold; }
+        
+        /* Estilo de los cuadros de texto (Inputs) */
+        input[type="text"] { 
+            border: none; 
+            border-bottom: 2px solid #1a73e8; 
+            width: 80px; 
+            text-align: center; 
+            font-size: 15px; 
+            outline: none; 
+            background: transparent; 
+            color: #1a73e8; 
+            font-weight: bold; 
+        }
+
+        /* Botón principal */
+        .btn-check { 
+            background: #1a73e8; 
+            color: white; 
+            border: none; 
+            width: 100%; 
+            padding: 15px; 
+            border-radius: 10px; 
+            font-size: 16px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            margin-top: 20px; 
+        }
+        
+        /* Estilos del Reporte Final */
+        #report { display: none; margin-top: 20px; padding: 20px; border-radius: 12px; border: 2px solid #1a73e8; }
+        .correct { color: #1e8e3e; font-weight: bold; }
+        .incorrect { color: #d93025; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Unit 2: Grammar 2</h2>
+    
+    <div class="grammar-box">
+        <b>Object Pronouns:</b> me, you, him, her, it, us, them.<br>
+        <i>Complete the sentences with the correct object pronoun. Notice the underlined words.</i>
+    </div>
+
+    <div id="quiz">
+        <div class="item">1. I speak <span class="underline">English</span> at school. I speak <b>it</b> outside class, too. (Example)</div>
+        
+        <div class="item">2. When I speak English, <span class="underline">I</span> feel nervous. It's hard for <input type="text" id="q2" placeholder="...">.</div>
+        
+        <div class="item">3. Some <span class="underline">people</span> speak very fast. I can't understand <input type="text" id="q3" placeholder="...">.</div>
+        
+        <div class="item">4. My sister hates <span class="underline">spiders</span>, but I'm not afraid of <input type="text" id="q4" placeholder="...">.</div>
+        
+        <div class="item">5. I have a <span class="underline">test</span> coming up. I'm not worried about <input type="text" id="q5" placeholder="...">.</div>
+        
+        <div class="item">6. <span class="underline">We</span> are studying English. It can help <input type="text" id="q6" placeholder="..."> get jobs.</div>
+        
+        <div class="item">7. <span class="underline">Maria</span> is my best friend. I text <input type="text" id="q7" placeholder="..."> every day.</div>
+        
+        <div class="item">8. Can <span class="underline">you</span> speak Italian? I can teach <input type="text" id="q8" placeholder="..."> some words.</div>
+
+        <button class="btn-check" onclick="checkAnswers()">Submit Results</button>
+    </div>
+
+    <div id="report">
+        <h3 style="margin-top:0;">Performance Report</h3>
+        <p id="stName"></p>
+        <p id="stTime"></p>
+        <hr>
+        <div id="resList"></div>
+        <h3 id="finalScore"></h3>
+        <button class="btn-check" style="background:#5f6368;" onclick="location.href='../lengua2.html'">Back to Menu</button>
+    </div>
+</div>
+
+<script>
+    function checkAnswers() {
+        // Obtenemos el nombre guardado en el login
+        const name = localStorage.getItem('userName') || "Student";
+        let score = 0;
+        let feedback = "";
+        
+        // --- BASE DE DATOS DE RESPUESTAS ---
+        // Aquí puede modificar las palabras correctas si cambia las oraciones arriba.
+        const answers = ["me", "them", "them", "it", "us", "her", "you"];
+
+        // Bucle para revisar cada una de las 7 preguntas (del ID q2 al q8)
+        for(let i=0; i<7; i++) {
+            // Obtenemos lo que escribió el alumno, quitamos espacios y pasamos a minúsculas
+            let userAns = document.getElementById('q'+(i+2)).value.trim().toLowerCase();
+            
+            // Comparación
+            if(userAns === answers[i]) {
+                score++;
+                feedback += `<p>Item ${i+2}: <span class="correct">Correct ✅</span></p>`;
+            } else {
+                feedback += `<p>Item ${i+2}: <span class="incorrect">Incorrect ❌ (Correct: ${answers[i]})</span></p>`;
+            }
+        }
+
+        // Mostrar el reporte y ocultar el examen
+        document.getElementById('quiz').style.display = 'none';
+        document.getElementById('report').style.display = 'block';
+        document.getElementById('stName').innerHTML = `<b>Student:</b> ${name}`;
+        document.getElementById('stTime').innerHTML = `<b>Date:</b> ${new Date().toLocaleString()}`;
+        document.getElementById('resList').innerHTML = feedback;
+        document.getElementById('finalScore').innerHTML = `Final Score: ${score} / 7`;
+    }
+</script>
+
+</body>
+</html>
