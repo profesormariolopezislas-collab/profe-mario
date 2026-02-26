@@ -3,52 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unit 2: Grammar 2 - Lengua IV</title>
+    <title>Unit 2: Grammar 1 - Extended Practice</title>
     <style>
-        /* --- ESTILOS VISUALES (Identidad Púrpura para L4) --- */
+        /* --- ESTILOS VISUALES (Identidad L4) --- */
         * { box-sizing: border-box; }
         body { font-family: -apple-system, sans-serif; background-color: #f3e5f5; margin: 0; padding: 10px; }
-        .container { max-width: 700px; background: white; padding: 25px; border-radius: 15px; margin: auto; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .container { max-width: 800px; background: white; padding: 25px; border-radius: 15px; margin: auto; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h2 { color: #7b1fa2; text-align: center; }
         
-        h2 { color: #7b1fa2; text-align: center; margin-bottom: 20px; }
-        
-        /* Tabla de Gramática en la Cabecera */
-        .grammar-header { 
-            background: #f8f0fb; 
-            border: 2px solid #ce93d8; 
-            border-radius: 10px; 
-            padding: 15px; 
-            margin-bottom: 25px; 
-            font-size: 13px;
-        }
+        /* TABLA DE GRAMÁTICA COMPLETA */
+        .grammar-header { background: #f8f0fb; border: 2px solid #ce93d8; border-radius: 10px; padding: 20px; margin-bottom: 25px; font-size: 12px; }
         .grammar-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        .grammar-table th, .grammar-table td { border: 1px solid #ce93d8; padding: 8px; text-align: left; }
+        .grammar-table th, .grammar-table td { border: 1px solid #ce93d8; padding: 10px; text-align: left; vertical-align: top; }
         .grammar-table th { background: #ba68c8; color: white; }
+        .stative-box { background: #fff; padding: 10px; border: 1px dashed #ba68c8; margin-top: 10px; }
 
-        .section-title { 
-            background: #8e24aa; 
-            color: white; 
-            padding: 10px; 
-            border-radius: 5px; 
-            margin: 20px 0 15px; 
-            font-size: 15px; 
-        }
+        .section-title { background: #8e24aa; color: white; padding: 12px; border-radius: 5px; margin: 25px 0 15px; font-size: 16px; font-weight: bold; }
+        .item { margin-bottom: 20px; font-size: 14px; line-height: 1.6; padding-bottom: 10px; border-bottom: 1px solid #eee; }
+        input[type="text"] { border: none; border-bottom: 2px solid #8e24aa; width: 250px; padding: 2px; outline: none; font-weight: bold; color: #4a148c; background: transparent; }
+        select { padding: 8px; border-radius: 5px; border: 1px solid #8e24aa; color: #4a148c; width: 100%; margin-top: 5px; }
 
-        .item { margin-bottom: 15px; font-size: 14px; line-height: 1.5; }
-        input[type="text"] { 
-            border: none; border-bottom: 2px solid #8e24aa; 
-            width: 180px; padding: 2px; outline: none; font-weight: bold; color: #4a148c;
-        }
+        .btn-submit { background: #8e24aa; color: white; border: none; width: 100%; padding: 18px; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 30px; transition: 0.3s; }
+        .btn-submit:hover { background: #7b1fa2; }
 
-        select { padding: 5px; border-radius: 5px; border: 1px solid #8e24aa; color: #4a148c; }
-
-        .btn-submit { 
-            background: #8e24aa; color: white; border: none; width: 100%; 
-            padding: 15px; border-radius: 10px; font-size: 16px; font-weight: bold; 
-            cursor: pointer; margin-top: 30px; 
-        }
-
-        /* Reporte Final */
         #report { display: none; margin-top: 20px; padding: 20px; border-radius: 12px; border: 2px solid #8e24aa; background: #fff; }
         .correct { color: #2e7d32; font-weight: bold; }
         .incorrect { color: #c62828; font-weight: bold; }
@@ -57,10 +34,10 @@
 <body>
 
 <div class="container">
-    <h2>Unit 2: Grammar 2</h2>
+    <h2>Unit 2: Grammar 2 (Full Practice)</h2>
 
     <div class="grammar-header">
-        <strong>Grammar Reference: Simple Present vs. Present Continuous</strong>
+        <strong>GRAMMAR REFERENCE: Simple Present vs. Present Continuous</strong>
         <table class="grammar-table">
             <tr>
                 <th>Use Case</th>
@@ -68,55 +45,53 @@
                 <th>Present Continuous</th>
             </tr>
             <tr>
-                <td>General facts / Now</td>
+                <td><b>Facts / Now</b></td>
                 <td>My company employs 250 people.</td>
                 <td>My company is recruiting more staff.</td>
             </tr>
             <tr>
-                <td>Stative Verbs</td>
-                <td>I know what you mean. (Believe)</td>
-                <td>(Not usually used in continuous)</td>
+                <td><b>Routines / Temporary</b></td>
+                <td>I start work at nine.</td>
+                <td>This week, I'm starting early at eight.</td>
             </tr>
             <tr>
-                <td>Annoyance</td>
-                <td>-</td>
-                <td>We're always having meetings!</td>
+                <td><b>Regular Change / Situation</b></td>
+                <td>The cost of tickets goes up every year.</td>
+                <td>Public transportation is getting more expensive.</td>
+            </tr>
+            <tr>
+                <td><b>"Every time" / "All the time"</b></td>
+                <td>He always arrives on time.</td>
+                <td>He's always complaining! (Annoyance)</td>
             </tr>
         </table>
+        <div class="stative-box">
+            <strong>Stative Verbs (State/Opinion):</strong> use simple present. <i>(know, like, love, believe, understand)</i>.<br>
+            <strong>Dynamic Verbs (Action):</strong> use both. <i>(work, develop, meet)</i>.
+        </div>
     </div>
 
     <div id="quiz">
         <div class="section-title">A. Make sentences using the correct tense.</div>
-        <div class="item">1. We / currently / develop / a new product.<br>
-            <input type="text" id="a1" placeholder="Type sentence here..."></div>
-        <div class="item">2. Once a day, / my department / meet / for ten minutes.<br>
-            <input type="text" id="a2" placeholder="Type sentence here..."></div>
-        <div class="item">3. Sorry, I / not / understand / the question.<br>
-            <input type="text" id="a3" placeholder="Type sentence here..."></div>
+        <div class="item">1. We / currently / develop / a new product.<br><input type="text" id="a1" placeholder="Type sentence..."></div>
+        <div class="item">2. Once a day, / my department / meet / for ten minutes.<br><input type="text" id="a2" placeholder="Type sentence..."></div>
+        <div class="item">3. Sorry, I / not / understand / the question.<br><input type="text" id="a3" placeholder="Type sentence..."></div>
+        <div class="item">4. At the moment, / I / feel / great about my promotion.<br><input type="text" id="a4" placeholder="Type sentence..."></div>
+        <div class="item">5. The management / always / change / how we work.<br><input type="text" id="a5" placeholder="Type sentence..."></div>
+        <div class="item">6. He / speak / to someone. Can he call you back?<br><input type="text" id="a6" placeholder="Type sentence..."></div>
 
-        <div class="section-title">B. Choose the correct interpretation for each sentence.</div>
-        <div class="item">
-            1. "Eduardo is coming from Colombia."<br>
-            <select id="b1">
-                <option value="">Select answer...</option>
-                <option value="right">He is traveling from there right now.</option>
-                <option value="wrong">Colombia is his permanent home country.</option>
-            </select>
-        </div>
-        <div class="item">
-            2. "He's being helpful today."<br>
-            <select id="b2">
-                <option value="">Select answer...</option>
-                <option value="wrong">It's part of his normal personality.</option>
-                <option value="right">He is behaving this way temporarily.</option>
-            </select>
-        </div>
+        <div class="section-title">B. Choose the correct interpretation.</div>
+        <div class="item">1. "Eduardo is coming from Colombia."<br><select id="b1"><option value="">Select...</option><option value="right">He is traveling right now.</option><option value="wrong">It's his home country.</option></select></div>
+        <div class="item">2. "He's being helpful today."<br><select id="b2"><option value="">Select...</option><option value="wrong">He is always helpful.</option><option value="right">He is behaving this way temporarily.</option></select></div>
+        <div class="item">3. "I have a meeting at 3."<br><select id="b3"><option value="">Select...</option><option value="right">It's a scheduled event.</option><option value="wrong">It's something happening all the time.</option></select></div>
+        <div class="item">4. "I'm thinking about it."<br><select id="b4"><option value="">Select...</option><option value="right">I am in the process of deciding.</option><option value="wrong">It's my final opinion.</option></select></div>
+        <div class="item">5. "He's very helpful."<br><select id="b5"><option value="">Select...</option><option value="right">It's part of his normal personality.</option><option value="wrong">He's only doing it today.</option></select></div>
 
-        <div class="section-title">C. Complaints: Order the words correctly (Always + Continuous).</div>
-        <div class="item">1. (always / they / complaining / are / about / work)<br>
-            <input type="text" id="c1" placeholder="Order the sentence..."></div>
-        <div class="item">2. (is / he / talking / always / phone / on / the)<br>
-            <input type="text" id="c2" placeholder="Order the sentence..."></div>
+        <div class="section-title">C. Complaints: Order the words (Always + Continuous).</div>
+        <div class="item">1. (always / they / complaining / are / about / work)<br><input type="text" id="c1" placeholder="Order sentence..."></div>
+        <div class="item">2. (is / he / talking / always / phone / on / the)<br><input type="text" id="c2" placeholder="Order sentence..."></div>
+        <div class="item">3. (forgetting / always / she / is / her / keys)<br><input type="text" id="c3" placeholder="Order sentence..."></div>
+        <div class="item">4. (are / you / always / arriving / late / class / to)<br><input type="text" id="c4" placeholder="Order sentence..."></div>
 
         <button class="btn-submit" onclick="evaluateQuiz()">Submit Activity</button>
     </div>
@@ -131,61 +106,50 @@
 </div>
 
 <script>
-    // Comentario: Esta función revisa las respuestas automáticamente
     function evaluateQuiz() {
         const student = localStorage.getItem('userName') || "Student";
         let points = 0;
-        let total = 7;
+        let total = 15; // 6 (A) + 5 (B) + 4 (C)
         let html = "";
 
-        // Respuestas Correctas
-        const answers = {
-            a1: "we are currently developing a new product",
-            a2: "once a day, my department meets for ten minutes",
-            a3: "sorry, i do not understand the question", // También acepta i don't...
-            b1: "right",
-            b2: "right",
-            c1: "they are always complaining about work",
-            c2: "he is always talking on the phone"
-        };
+        // Auxiliar para evaluar inputs de texto
+        function check(id, correct) {
+            let val = document.getElementById(id).value.trim().toLowerCase();
+            if(val.includes(correct)) { points++; return true; }
+            return false;
+        }
 
-        // Lógica de evaluación (Sección A)
-        const checkA1 = document.getElementById('a1').value.trim().toLowerCase();
-        if(checkA1 === answers.a1) { points++; html += "<p>A1: <span class='correct'>Correct ✅</span></p>"; }
-        else { html += `<p>A1: <span class='incorrect'>Incorrect ❌</span></p>`; }
+        // SECCIÓN A (Keywords check)
+        if(check('a1', "currently developing")) html += "A1 ✅ "; else html += "A1 ❌ ";
+        if(check('a2', "meets")) html += "A2 ✅ "; else html += "A2 ❌ ";
+        if(check('a3', "understand")) html += "A3 ✅ "; else html += "A3 ❌ ";
+        if(check('a4', "am feeling") || check('a4', "feel")) html += "A4 ✅ "; else html += "A4 ❌ ";
+        if(check('a5', "always changes") || check('a5', "is always changing")) html += "A5 ✅ "; else html += "A5 ❌ ";
+        if(check('a6', "is speaking")) html += "A6 ✅ "; else html += "A6 ❌ ";
 
-        const checkA2 = document.getElementById('a2').value.trim().toLowerCase();
-        if(checkA2.includes("meets")) { points++; html += "<p>A2: <span class='correct'>Correct ✅</span></p>"; }
-        else { html += `<p>A2: <span class='incorrect'>Incorrect ❌</span></p>`; }
+        // SECCIÓN B
+        for(let i=1; i<=5; i++) {
+            if(document.getElementById('b'+i).value === "right") { points++; html += `B${i} ✅ `; }
+            else { html += `B${i} ❌ `; }
+        }
 
-        const checkA3 = document.getElementById('a3').value.trim().toLowerCase();
-        if(checkA3.includes("do not understand") || checkA3.includes("don't understand")) { points++; html += "<p>A3: <span class='correct'>Correct ✅</span></p>"; }
-        else { html += `<p>A3: <span class='incorrect'>Incorrect ❌</span></p>`; }
-
-        // Sección B (Selects)
-        if(document.getElementById('b1').value === "right") { points++; html += "<p>B1: <span class='correct'>Correct ✅</span></p>"; }
-        else { html += "<p>B1: <span class='incorrect'>Incorrect ❌</span></p>"; }
+        // SECCIÓN C (Exact Match)
+        const c1 = "they are always complaining about work";
+        const c2 = "he is always talking on the phone";
+        const c3 = "she is always forgetting her keys";
+        const c4 = "you are always arriving late to class";
         
-        if(document.getElementById('b2').value === "right") { points++; html += "<p>B2: <span class='correct'>Correct ✅</span></p>"; }
-        else { html += "<p>B2: <span class='incorrect'>Incorrect ❌</span></p>"; }
+        if(document.getElementById('c1').value.trim().toLowerCase() === c1) { points++; html += "C1 ✅ "; } else html += "C1 ❌ ";
+        if(document.getElementById('c2').value.trim().toLowerCase() === c2) { points++; html += "C2 ✅ "; } else html += "C2 ❌ ";
+        if(document.getElementById('c3').value.trim().toLowerCase() === c3) { points++; html += "C3 ✅ "; } else html += "C3 ❌ ";
+        if(document.getElementById('c4').value.trim().toLowerCase() === c4) { points++; html += "C4 ✅ "; } else html += "C4 ❌ ";
 
-        // Sección C (Sentence building)
-        const checkC1 = document.getElementById('c1').value.trim().toLowerCase();
-        if(checkC1 === answers.c1) { points++; html += "<p>C1: <span class='correct'>Correct ✅</span></p>"; }
-        else { html += `<p>C1: <span class='incorrect'>Incorrect ❌</span></p>`; }
-
-        const checkC2 = document.getElementById('c2').value.trim().toLowerCase();
-        if(checkC2 === answers.c2) { points++; html += "<p>C2: <span class='correct'>Correct ✅</span></p>"; }
-        else { html += `<p>C2: <span class='incorrect'>Incorrect ❌</span></p>`; }
-
-        // Mostrar resultados
         document.getElementById('quiz').style.display = 'none';
         document.getElementById('report').style.display = 'block';
-        document.getElementById('stInfo').innerHTML = `<b>Student:</b> ${student}<br><b>Date:</b> ${new Date().toLocaleString()}`;
-        document.getElementById('results').innerHTML = html;
+        document.getElementById('stInfo').innerHTML = `<b>Student:</b> ${student}`;
+        document.getElementById('results').innerHTML = `<p>${html}</p>`;
         document.getElementById('score').innerHTML = `Final Grade: ${points} / ${total}`;
     }
 </script>
-
 </body>
 </html>
