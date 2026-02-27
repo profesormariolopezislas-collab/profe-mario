@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOMINA Week 1 - 20 Questions</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: -apple-system, sans-serif; background: #fff3e0; padding: 15px; }
+        .container { max-width: 800px; background: white; padding: 30px; border-radius: 15px; margin: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h2 { color: #e65100; text-align: center; border-bottom: 2px solid #ffb74d; padding-bottom: 10px; }
+        .item { margin-bottom: 15px; padding: 10px; border-bottom: 1px solid #eee; }
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 5px; }
+        label { background: #fff8f1; padding: 8px; border-radius: 5px; border: 1px solid #ffe0b2; cursor: pointer; font-size: 14px; }
+        input[type="radio"] { margin-right: 8px; }
+        .btn-submit { background: #e65100; color: white; border: none; width: 100%; padding: 18px; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 20px; }
+        #report { display: none; }
+        .correct { color: #2e7d32; } .incorrect { color: #c62828; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>DOMINA: Week 1 (Adjectives & Prepositions)</h2>
+    <div id="quiz">
+        <div id="questions-container"></div>
+        <button class="btn-submit" onclick="evaluateQuiz()">Submit all 20 answers</button>
+    </div>
+
+    <div id="report">
+        <h3 id="score-text"></h3>
+        <div id="feedback"></div>
+        <button class="btn-submit" style="background:#757575;" onclick="location.href='../Ingles_av2.html'">Back to Menu</button>
+    </div>
+</div>
+
+<script>
+    // Clave de respuestas según tu PDF (Semana 1)
+    const key = ["B","C","B","A","B","A","B","C","A","B","B","C","B","C","C","C","B","C","C","A"];
+
+    // Generar las 20 preguntas dinámicamente para ahorrar espacio en código
+    const container = document.getElementById('questions-container');
+    for(let i=1; i<=20; i++) {
+        container.innerHTML += `
+            <div class="item">
+                <strong>Question ${i}:</strong> Choose the correct option.
+                <div class="options">
+                    <label><input type="radio" name="q${i}" value="A"> A</label>
+                    <label><input type="radio" name="q${i}" value="B"> B</label>
+                    <label><input type="radio" name="q${i}" value="C"> C</label>
+                    <label><input type="radio" name="q${i}" value="D"> D</label>
+                </div>
+            </div>`;
+    }
+
+    function evaluateQuiz() {
+        let score = 0;
+        let html = "";
+        for(let i=1; i<=20; i++) {
+            let selected = document.querySelector(`input[name="q${i}"]:checked`);
+            let userAns = selected ? selected.value : "None";
+            if(userAns === key[i-1]) {
+                score++;
+                html += `<p>Q${i}: <span class="correct">Correct ✅</span></p>`;
+            } else {
+                html += `<p>Q${i}: <span class="incorrect">Incorrect ❌ (Correct: ${key[i-1]})</span></p>`;
+            }
+        }
+        document.getElementById('quiz').style.display = 'none';
+        document.getElementById('report').style.display = 'block';
+        document.getElementById('score-text').innerText = `Final Score: ${score} / 20`;
+        document.getElementById('feedback').innerHTML = html;
+    }
+</script>
+</body>
+</html>
