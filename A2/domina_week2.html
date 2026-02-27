@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOMINA Week 2 - Full Quiz</title>
+    <style>
+        /* Mismos estilos para consistencia */
+        * { box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #fff3e0; margin: 0; padding: 20px; }
+        .container { max-width: 800px; background: white; padding: 30px; border-radius: 15px; margin: auto; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        h2 { color: #e65100; text-align: center; border-bottom: 3px solid #ffb74d; padding-bottom: 10px; }
+        .question-item { margin-bottom: 25px; padding: 15px; border-bottom: 1px solid #eee; }
+        .question-text { font-weight: bold; margin-bottom: 10px; }
+        .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        label { background: #fdfdfd; border: 1px solid #ddd; padding: 10px; border-radius: 8px; cursor: pointer; }
+        .btn-submit { background: #e65100; color: white; border: none; width: 100%; padding: 20px; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; }
+        #report { display: none; }
+        .correct { color: #2e7d32; font-weight: bold; }
+        .incorrect { color: #c62828; font-weight: bold; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>DOMINA: Week 2</h2>
+    <p style="text-align:center">Simple, Continuous & Perfect Tenses</p>
+
+    <div id="quiz-area">
+        <div id="questions-container"></div>
+        <button class="btn-submit" onclick="evaluateQuiz()">Submit Results</button>
+    </div>
+
+    <div id="report">
+        <h2 id="final-score"></h2>
+        <div id="details" style="text-align:left;"></div>
+        <button class="btn-submit" style="background:#757575" onclick="location.href='../Ingles_av2.html'">Return to Menu</button>
+    </div>
+</div>
+
+<script>
+    // Clave: A, C, D, D, C, C, B, C, D, C, A, C, C, D, B, C, C, B, C, C
+    const questions = [
+        { q: "I ____ my homework every day.", a: "do", b: "doing", c: "does", d: "did", ans: "A" },
+        { q: "She ____ to the store right now.", a: "go", b: "goes", c: "is going", d: "went", ans: "C" },
+        { q: "They ____ that movie three times already.", a: "see", b: "saw", c: "seeing", d: "have seen", ans: "D" },
+        { q: "Look! It ____.", a: "snow", b: "snows", c: "snowed", d: "is snowing", ans: "D" },
+        { q: "He ____ English for five years.", a: "study", b: "studied", c: "has studied", d: "studies", ans: "C" },
+        { q: "Water ____ at 100°C.", a: "boil", b: "boiling", c: "boils", d: "boiled", ans: "C" },
+        { q: "I ____ a sandwich for lunch yesterday.", a: "eat", b: "ate", c: "eaten", d: "eating", ans: "B" },
+        { q: "We ____ on a new project this month.", a: "work", b: "works", c: "are working", d: "worked", ans: "C" },
+        { q: "By the time I arrived, they ____.", a: "leave", b: "left", c: "leaving", d: "had left", ans: "D" },
+        { q: "Listen! The baby ____.", a: "cry", b: "cries", c: "is crying", d: "cried", ans: "C" },
+        { q: "____ you ever been to Paris?", a: "Have", b: "Has", c: "Did", d: "Do", ans: "A" },
+        { q: "She ____ her keys this morning.", a: "lose", b: "losing", c: "lost", d: "has lost", ans: "C" },
+        { q: "I ____ my dinner when the phone rang.", a: "eat", b: "ate", c: "was eating", d: "am eating", ans: "C" },
+        { q: "They ____ here since 2010.", a: "live", b: "lived", c: "living", d: "have lived", ans: "D" },
+        { q: "The sun ____ in the east.", a: "rise", b: "rises", c: "rising", d: "rose", ans: "B" },
+        { q: "____ he working today?", a: "Do", b: "Does", c: "Is", d: "Has", ans: "C" },
+        { q: "I ____ finished my work yet.", a: "don't", b: "didn't", c: "haven't", d: "not", ans: "C" },
+        { q: "Last night, we ____ to the party.", a: "go", b: "went", c: "gone", d: "going", ans: "B" },
+        { q: "She ____ always late for class.", a: "be", b: "are", c: "is", d: "was", ans: "C" },
+        { q: "We ____ dinner at 8:00 PM tonight.", a: "have", b: "has", c: "are having", d: "had", ans: "C" }
+    ];
+
+    const container = document.getElementById('questions-container');
+    questions.forEach((item, index) => {
+        container.innerHTML += `
+            <div class="question-item">
+                <div class="question-text">${index + 1}. ${item.q}</div>
+                <div class="options-grid">
+                    <label><input type="radio" name="q${index}" value="A"> A) ${item.a}</label>
+                    <label><input type="radio" name="q${index}" value="B"> B) ${item.b}</label>
+                    <label><input type="radio" name="q${index}" value="C"> C) ${item.c}</label>
+                    <label><input type="radio" name="q${index}" value="D"> D) ${item.d}</label>
+                </div>
+            </div>`;
+    });
+
+    function evaluateQuiz() {
+        let score = 0;
+        let details = "";
+        questions.forEach((item, i) => {
+            const sel = document.querySelector(`input[name="q${i}"]:checked`);
+            const ans = sel ? sel.value : "None";
+            if(ans === item.ans) { score++; details += `<p>Q${i+1}: ✅</p>`; }
+            else { details += `<p>Q${i+1}: ❌ (Correct: ${item.ans})</p>`; }
+        });
+        document.getElementById('quiz-area').style.display = 'none';
+        document.getElementById('report').style.display = 'block';
+        document.getElementById('final-score').innerHTML = `Score: ${score} / 20`;
+        document.getElementById('details').innerHTML = details;
+    }
+</script>
+</body>
+</html>
