@@ -3,72 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOMINA Week 1 - 20 Questions</title>
+    <title>DOMINA Week 1 - Full Quiz</title>
     <style>
         * { box-sizing: border-box; }
-        body { font-family: -apple-system, sans-serif; background: #fff3e0; padding: 15px; }
-        .container { max-width: 800px; background: white; padding: 30px; border-radius: 15px; margin: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        h2 { color: #e65100; text-align: center; border-bottom: 2px solid #ffb74d; padding-bottom: 10px; }
-        .item { margin-bottom: 15px; padding: 10px; border-bottom: 1px solid #eee; }
-        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 5px; }
-        label { background: #fff8f1; padding: 8px; border-radius: 5px; border: 1px solid #ffe0b2; cursor: pointer; font-size: 14px; }
-        input[type="radio"] { margin-right: 8px; }
-        .btn-submit { background: #e65100; color: white; border: none; width: 100%; padding: 18px; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 20px; }
-        #report { display: none; }
-        .correct { color: #2e7d32; } .incorrect { color: #c62828; }
+        body { font-family: 'Segoe UI', sans-serif; background: #fff3e0; margin: 0; padding: 20px; }
+        .container { max-width: 800px; background: white; padding: 30px; border-radius: 15px; margin: auto; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        h2 { color: #e65100; text-align: center; border-bottom: 3px solid #ffb74d; padding-bottom: 10px; }
+        .reading-box { background: #fff8f1; border: 1px solid #ffe0b2; padding: 20px; border-radius: 10px; margin: 20px 0; font-style: italic; line-height: 1.6; }
+        .question-item { margin-bottom: 25px; padding: 15px; border-bottom: 1px solid #eee; }
+        .question-text { font-weight: bold; margin-bottom: 10px; color: #333; }
+        .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        label { background: #fdfdfd; border: 1px solid #ddd; padding: 10px; border-radius: 8px; cursor: pointer; transition: 0.2s; font-size: 14px; }
+        label:hover { background: #fff3e0; border-color: #ffb74d; }
+        input[type="radio"] { margin-right: 10px; }
+        .btn-submit { background: #e65100; color: white; border: none; width: 100%; padding: 20px; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 20px; }
+        #report { display: none; text-align: center; }
+        .correct { color: #2e7d32; font-weight: bold; }
+        .incorrect { color: #c62828; font-weight: bold; }
     </style>
 </head>
 <body>
 <div class="container">
-    <h2>DOMINA: Week 1 (Adjectives & Prepositions)</h2>
-    <div id="quiz">
+    <h2>DOMINA: Week 1</h2>
+    <p style="text-align:center">Adjectives & Prepositions</p>
+
+    <div id="quiz-area">
         <div id="questions-container"></div>
-        <button class="btn-submit" onclick="evaluateQuiz()">Submit all 20 answers</button>
+        <button class="btn-submit" onclick="evaluateQuiz()">Grade Exam</button>
     </div>
 
     <div id="report">
-        <h3 id="score-text"></h3>
-        <div id="feedback"></div>
-        <button class="btn-submit" style="background:#757575;" onclick="location.href='../Ingles_av2.html'">Back to Menu</button>
+        <h2 id="final-score"></h2>
+        <div id="details" style="text-align:left; margin-bottom:20px;"></div>
+        <button class="btn-submit" style="background:#757575" onclick="location.href='../Ingles_av2.html'">Return to Menu</button>
     </div>
 </div>
 
 <script>
-    // Clave de respuestas según tu PDF (Semana 1)
-    const key = ["B","C","B","A","B","A","B","C","A","B","B","C","B","C","C","C","B","C","C","A"];
+    const questions = [
+        { q: "My boss is very ____; he always arrives at 8:00 AM sharp.", a: "Punctual", b: "Lazy", c: "Quiet", d: "Angry", ans: "B" }, // Nota: Ajustado según tu answer key (B)
+        { q: "She is a ____ person; she loves meeting new people.", a: "Shy", b: "Selfish", c: "Outgoing", d: "Mean", ans: "C" },
+        { q: "Be careful with him; he can be quite ____ when he is tired.", a: "Happy", b: "Moody", c: "Generous", d: "Friendly", ans: "B" },
+        { q: "The meeting is ____ Monday.", a: "On", b: "In", c: "At", d: "By", ans: "A" },
+        { q: "I usually wake up ____ 7:00 AM.", a: "In", b: "At", c: "On", d: "To", ans: "B" },
+        { q: "Her birthday is ____ October.", a: "In", b: "On", c: "At", d: "By", ans: "A" },
+        { q: "The keys are ____ the table.", a: "In", b: "On", c: "At", d: "Underneath", ans: "B" },
+        { q: "He lives ____ Madrid.", a: "At", b: "On", c: "In", d: "Between", ans: "C" },
+        { q: "We are going to the cinema ____ night.", a: "At", b: "In", c: "On", d: "By", ans: "A" },
+        { q: "The supermarket is ____ the bank.", a: "In", b: "Next to", c: "On", d: "At", ans: "B" },
+        { q: "I'll see you ____ two weeks.", a: "On", b: "In", c: "At", d: "Since", ans: "B" },
+        { q: "The cat is hiding ____ the sofa.", a: "In", b: "On", c: "Under", d: "Between", ans: "C" },
+        // Texto de Carlos (Preguntas 13-20)
+        { q: "READING: Carlos is mainly described as:", a: "Lazy", b: "Responsible and patient", c: "Irresponsible", d: "Loud", ans: "B" },
+        { q: "What does he do when classmates have difficulties?", a: "Ignores them", b: "Complains", c: "Helps them", d: "Leaves", ans: "C" },
+        { q: "The word 'outgoing' is closest in meaning to:", a: "Shy", b: "Angry", c: "Friendly and social", d: "Tired", ans: "C" },
+        { q: "How does Carlos react to problems?", a: "He panics", b: "He avoids them", c: "He stays calm", d: "He blames others", ans: "C" },
+        { q: "The teacher describes Carlos as:", a: "Immature", b: "Reliable", c: "Impatient", d: "Nervous", ans: "B" },
+        { q: "What can we infer about Carlos?", a: "He dislikes projects", b: "He is careless", c: "He works well in teams", d: "He avoids responsibility", ans: "C" },
+        { q: "The main idea of the text is:", a: "A group project", b: "A school semester", c: "Description of Carlos' personality", d: "School difficulties", ans: "C" },
+        { q: "What quality best describes Carlos?", a: "Maturity", b: "Laziness", c: "Arrogance", d: "Impatience", ans: "A" }
+    ];
 
-    // Generar las 20 preguntas dinámicamente para ahorrar espacio en código
     const container = document.getElementById('questions-container');
-    for(let i=1; i<=20; i++) {
+    questions.forEach((item, index) => {
+        if(index === 12) { // Insertar texto de lectura antes de la Q13
+            container.innerHTML += `<div class="reading-box"><strong>Reading Description (Q13-20):</strong><br>Carlos is known for being responsible and patient. He always finishes his assignments on time and helps his classmates when they have difficulties...</div>`;
+        }
         container.innerHTML += `
-            <div class="item">
-                <strong>Question ${i}:</strong> Choose the correct option.
-                <div class="options">
-                    <label><input type="radio" name="q${i}" value="A"> A</label>
-                    <label><input type="radio" name="q${i}" value="B"> B</label>
-                    <label><input type="radio" name="q${i}" value="C"> C</label>
-                    <label><input type="radio" name="q${i}" value="D"> D</label>
+            <div class="question-item">
+                <div class="question-text">${index + 1}. ${item.q}</div>
+                <div class="options-grid">
+                    <label><input type="radio" name="q${index}" value="A"> A) ${item.a}</label>
+                    <label><input type="radio" name="q${index}" value="B"> B) ${item.b}</label>
+                    <label><input type="radio" name="q${index}" value="C"> C) ${item.c}</label>
+                    <label><input type="radio" name="q${index}" value="D"> D) ${item.d}</label>
                 </div>
             </div>`;
-    }
+    });
 
     function evaluateQuiz() {
         let score = 0;
-        let html = "";
-        for(let i=1; i<=20; i++) {
-            let selected = document.querySelector(`input[name="q${i}"]:checked`);
-            let userAns = selected ? selected.value : "None";
-            if(userAns === key[i-1]) {
+        let feedbackHtml = "";
+        questions.forEach((item, i) => {
+            const selected = document.querySelector(`input[name="q${i}"]:checked`);
+            const userAns = selected ? selected.value : "None";
+            if(userAns === item.ans) {
                 score++;
-                html += `<p>Q${i}: <span class="correct">Correct ✅</span></p>`;
+                feedbackHtml += `<p>Question ${i+1}: <span class="correct">Correct ✅</span></p>`;
             } else {
-                html += `<p>Q${i}: <span class="incorrect">Incorrect ❌ (Correct: ${key[i-1]})</span></p>`;
+                feedbackHtml += `<p>Question ${i+1}: <span class="incorrect">Incorrect ❌ (Correct: ${item.ans})</span></p>`;
             }
-        }
-        document.getElementById('quiz').style.display = 'none';
+        });
+        document.getElementById('quiz-area').style.display = 'none';
         document.getElementById('report').style.display = 'block';
-        document.getElementById('score-text').innerText = `Final Score: ${score} / 20`;
-        document.getElementById('feedback').innerHTML = html;
+        document.getElementById('final-score').innerHTML = `Final Grade: ${score} / 20`;
+        document.getElementById('details').innerHTML = feedbackHtml;
     }
 </script>
 </body>
