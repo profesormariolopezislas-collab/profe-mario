@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grammar 2, Grammar 2 - Causatives Extended</title>
+    <style>
+        /* --- ESTILOS VISUALES L4 --- */
+        * { box-sizing: border-box; }
+        body { font-family: -apple-system, sans-serif; background-color: #f3e5f5; margin: 0; padding: 10px; }
+        .container { max-width: 800px; background: white; padding: 25px; border-radius: 15px; margin: auto; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h2 { color: #7b1fa2; text-align: center; margin-bottom: 5px; }
+        
+        /* TABLA DE GRAMÁTICA */
+        .grammar-header { background: #f8f0fb; border: 2px solid #ce93d8; border-radius: 10px; padding: 15px; margin-bottom: 25px; font-size: 13px; }
+        .grammar-table { width: 100%; border-collapse: collapse; margin-top: 10px; background: white; }
+        .grammar-table th, .grammar-table td { border: 1px solid #ce93d8; padding: 10px; text-align: left; }
+        .grammar-table th { background: #ba68c8; color: white; }
+
+        .section-title { background: #8e24aa; color: white; padding: 12px; border-radius: 5px; margin: 25px 0 15px; font-size: 16px; font-weight: bold; }
+        .item { margin-bottom: 20px; padding: 15px; background: #fafafa; border-radius: 8px; border-left: 5px solid #ba68c8; }
+        
+        input[type="text"] { border: none; border-bottom: 2px solid #8e24aa; width: 70%; padding: 5px; outline: none; font-weight: bold; color: #4a148c; background: transparent; }
+        select { width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ba68c8; color: #4a148c; margin-top: 8px; }
+
+        .btn-submit { background: #8e24aa; color: white; border: none; width: 100%; padding: 18px; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; }
+        .btn-submit:hover { background: #7b1fa2; }
+        
+        #report { display: none; margin-top: 20px; padding: 20px; border-radius: 12px; border: 2px solid #8e24aa; background: #fff; }
+        .correct { color: #2e7d32; font-weight: bold; }
+        .incorrect { color: #c62828; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Grammar 2, Grammar 2</h2>
+
+    <div class="grammar-header">
+        <strong>Grammar Reference: Causative have / get & need + -ing</strong>
+        <table class="grammar-table">
+            <thead>
+                <tr>
+                    <th>Structure</th>
+                    <th>Subject + have/get</th>
+                    <th>Object</th>
+                    <th>Past Participle</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Causative</td>
+                    <td>I got / I had</td>
+                    <td>my printer</td>
+                    <td>fixed.</td>
+                </tr>
+                <tr>
+                    <td colspan="4"><b>Structure: Need + -ing (Passive meaning)</b></td>
+                </tr>
+                <tr>
+                    <td>Need</td>
+                    <td>My printer</td>
+                    <td>needs</td>
+                    <td>fixing.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="quiz">
+        <div class="section-title">B. Complete the sentences (Causatives or Need + -ing).</div>
+        
+        <div class="item">1. (mechanic / repair / car) <br> I got <b>my car repaired by a mechanic</b>. (Example)</div>
+        
+        <div class="item">2. (assistant / carry / box) <br> I had <input type="text" id="b2" placeholder="my box carried...">.</div>
+        
+        <div class="item">3. (my jacket / mend) <br> I got <input type="text" id="b3" placeholder="my jacket mended">.</div>
+        
+        <div class="item">4. (bicycle / paint) <br> I had <input type="text" id="b4" placeholder="my bicycle painted">.</div>
+        
+        <div class="item">5. (invoice / pay) <br> This <input type="text" id="b5" placeholder="invoice needs paying">.</div>
+
+        <div class="item">6. (gardener / cut / grass) <br> I had <input type="text" id="b6" placeholder="the grass cut...">.</div>
+        
+        <div class="item">7. (my eyes / test / optometrist) <br> I got <input type="text" id="b7" placeholder="my eyes tested">.</div>
+        
+        <div class="item">8. (windows / clean) <br> The <input type="text" id="b8" placeholder="windows need cleaning">.</div>
+        
+        <div class="item">9. (chef / prepare / dinner) <br> I had <input type="text" id="b9" placeholder="dinner prepared...">.</div>
+        
+        <div class="item">10. (report / check / manager) <br> I got <input type="text" id="b10" placeholder="the report checked">.</div>
+
+        <div class="section-title">C. Match the service to the correct place.</div>
+        <div class="item">1. I get my teeth checked here.<br><select id="c1"><option value="">Select...</option><option value="right">At the dentist's</option><option value="wrong">At the hair salon</option></select></div>
+        <div class="item">2. I have my hair done here.<br><select id="c2"><option value="">Select...</option><option value="wrong">At the garage</option><option value="right">At the hair salon / Barber shop</option></select></div>
+        <div class="item">3. I get my car fixed here.<br><select id="c3"><option value="">Select...</option><option value="right">At the garage / mechanic's</option><option value="wrong">At the dry cleaner's</option></select></div>
+        <div class="item">4. I have pizza delivered from here.<br><select id="c4"><option value="">Select...</option><option value="right">From a pizzeria / restaurant</option><option value="wrong">From a pharmacy</option></select></div>
+        <div class="item">5. I get my suit cleaned here.<br><select id="c5"><option value="">Select...</option><option value="right">At the dry cleaner's</option><option value="wrong">At the dentist's</option></select></div>
+
+        <button class="btn-submit" onclick="evaluateQuiz()">Submit Activity</button>
+    </div>
+
+    <div id="report">
+        <h3>Performance Report</h3>
+        <p id="stName"></p>
+        <div id="resList"></div>
+        <h3 id="finalScore"></h3>
+        <button class="btn-submit" style="background:#616161;" onclick="location.href='../lengua4.html'">Back to Menu</button>
+    </div>
+</div>
+
+<script>
+    function evaluateQuiz() {
+        const name = localStorage.getItem('userName') || "Student";
+        let score = 0;
+        let total = 14; // 9 (B) + 5 (C)
+        let feedback = "";
+
+        // Función para validar Sección B (Palabras clave)
+        function validateB(id, keywords) {
+            let val = document.getElementById(id).value.trim().toLowerCase();
+            let pass = keywords.every(k => val.includes(k));
+            if(pass) { score++; feedback += `<p>${id.toUpperCase()}: <span class="correct">Correct ✅</span></p>`; }
+            else { feedback += `<p>${id.toUpperCase()}: <span class="incorrect">Incorrect ❌</span></p>`; }
+        }
+
+        // Ejecutar validación B
+        validateB('b2', ['box', 'carried']);
+        validateB('b3', ['jacket', 'mended']);
+        validateB('b4', ['bicycle', 'painted']);
+        validateB('b5', ['needs paying']);
+        validateB('b6', ['grass', 'cut']);
+        validateB('b7', ['eyes', 'tested']);
+        validateB('b8', ['needs cleaning']); // O "windows need cleaning"
+        validateB('b9', ['dinner', 'prepared']);
+        validateB('b10', ['report', 'checked']);
+
+        // Evaluar C (Selects)
+        for(let i=1; i<=5; i++) {
+            if(document.getElementById('c'+i).value === "right") { score++; feedback += `<p>C${i}: <span class="correct">Correct ✅</span></p>`; }
+            else { feedback += `<p>C${i}: <span class="incorrect">Incorrect ❌</span></p>`; }
+        }
+
+        document.getElementById('quiz').style.display = 'none';
+        document.getElementById('report').style.display = 'block';
+        document.getElementById('stName').innerHTML = `<b>Student:</b> ${name}`;
+        document.getElementById('resList').innerHTML = feedback;
+        document.getElementById('finalScore').innerHTML = `Score: ${score} / ${total}`;
+    }
+</script>
+</body>
+</html>
